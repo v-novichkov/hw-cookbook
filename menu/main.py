@@ -24,17 +24,15 @@ def get_shop_list_by_dishes(dishes, person_count):
     wishlist = {}
     for dish in cookbook:
         if dishes == dish:
-            for prod, quantity, unit in cookbook[dish]:
+            for x in cookbook[dish]:
+                prod, quantity, unit = x.values()
                 if prod in wishlist.keys():
-                    wishlist[prod][quantity] + quantity*int(person_count)
+                    wishlist[prod][int(quantity)] + int(quantity)*int(person_count)
                 else:
-                    count_prod = {'Количество': quantity*int(person_count), 'Ед. измерения': unit}
+                    count_prod = {'Количество': int(quantity)*int(person_count), 'Ед. измерения': unit}
                     wishlist.setdefault(prod, count_prod)
-        else:
-            print('Данного блюда в меню нет')
-    print(wishlist)
+    return wishlist
 
 
 cookbook = get_menu('Recipes.txt')
-pprint(cookbook)
-get_shop_list_by_dishes('Фахитос', '2')
+get_shop_list_by_dishes('Фахитоз', '2')
