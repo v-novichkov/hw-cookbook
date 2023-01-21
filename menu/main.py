@@ -35,4 +35,4 @@ def get_shop_list_by_dishes(dishes, person_count):
 
 
 cookbook = get_menu('Recipes.txt')
-get_shop_list_by_dishes('Фахитоз', '2')
+get_shop_list_by_dishes('Фахитоc', '2')
