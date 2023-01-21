@@ -36,5 +36,5 @@ def get_shop_list_by_dishes(dishes, person_count):
 
 
 cookbook = get_menu('Recipes.txt')
-pprint(cookbook['Фахитос'])
+pprint(cookbook)
 get_shop_list_by_dishes('Фахитос', '2')
