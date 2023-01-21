@@ -23,16 +23,19 @@ def get_menu(file):
 def get_shop_list_by_dishes(dishes, person_count):
     wishlist = {}
     for dish in cookbook:
-        if dishes == dish:
-            for x in cookbook[dish]:
-                prod, quantity, unit = x.values()
-                if prod in wishlist.keys():
-                    wishlist[prod][int(quantity)] + int(quantity)*int(person_count)
-                else:
-                    count_prod = {'Количество': int(quantity)*int(person_count), 'Ед. измерения': unit}
-                    wishlist.setdefault(prod, count_prod)
+       for dish_order in dishes:
+            if dish_order == dish:
+                for x in cookbook[dish]:
+                    prod, quantity, unit = x.values()
+                    if prod in wishlist.keys():
+                        wishlist[prod]['Количество'] = int(wishlist[prod]['Количество']) + int(quantity)*int(person_count)
+                    else:
+                        count_prod = {'Количество': int(quantity)*int(person_count), 'Ед. измерения': unit}
+                        wishlist.setdefault(prod, count_prod)
+    pprint(wishlist)
     return wishlist
 
 
 cookbook = get_menu('Recipes.txt')
-get_shop_list_by_dishes('Фахитоc', '2')
+pprint(cookbook)
+get_shop_list_by_dishes(['Фахитос', 'Омлет'], '2')
